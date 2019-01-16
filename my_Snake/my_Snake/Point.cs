@@ -15,10 +15,10 @@ namespace my_Snake
 
         public Point()
         {
-            WriteLine("A new point creating");
+            WriteLine("A new point creating"); // It's an empty contsructor
         }
 
-        public Point(int _x, int _y, char _sym)
+        public Point(int _x, int _y, char _sym) // It's a contsructor
         {
             x = _x;
             y = _y;
@@ -29,6 +29,6 @@ namespace my_Snake
         {
             SetCursorPosition(x, y);
             WriteLine(sym);
-        }
+        } //Our draw function
     }
 }

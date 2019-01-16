@@ -27,7 +27,8 @@ namespace my_Snake
 
             //Start point drawing
             Point p = new Point(4,5,'*');
-            p.Draw();
+            TheSnake snake = new TheSnake(p,4,Directions.RIGHT);
+            snake.LineDraw();
         }
     }
 }

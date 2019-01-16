@@ -9,6 +9,7 @@ namespace my_Snake
     class Figure
     {
         protected List<Point> pList; //declare our list for lines
+        // protected - to grant access to the variable fot other classes
 
         public void LineDraw()
         {

@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace my_Snake
 {
-    class VerticalLines
+    class VerticalLines : Figure //Inheritance
     {
-        List<Point> pList; //declare our list for lines
-
         public VerticalLines(int yBelow, int yAbove, int x, char sym)
         {
             pList = new List<Point>(); //create new object of List class
@@ -18,14 +16,6 @@ namespace my_Snake
             {
                 Point p = new Point(x, y, sym);
                 pList.Add(p);
-            }
-        }
-
-        public void LineDraw()
-        {
-            foreach (Point p in pList)
-            {
-                p.Draw();
             }
         }
     }

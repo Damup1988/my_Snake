@@ -11,23 +11,23 @@ namespace my_Snake
     {
         static void Main(string[] args)
         {
-            Point point1 = new Point(1, 3, '*');
-            point1.Draw();
+            SetWindowSize(80,25);
+            SetBufferSize(82,26);
 
-            Point point2 = new Point(3, 5, '#');
-            point2.Draw();
+            //Borders drawing
+            HorizontalLines HorAboveLine = new HorizontalLines(0, 78, 0, '#');
+            HorizontalLines HorBelowLine = new HorizontalLines(0, 78, 24, '#');
+            VerticalLines VerLeftLine = new VerticalLines(0, 24, 0, '#');
+            VerticalLines VerRightLine = new VerticalLines(0, 24, 78, '#');
 
-            List<Point> pList = new List<Point>();
-            pList.Add(point1);
-            pList.Add(point2);
+            HorAboveLine.LineDraw();
+            HorBelowLine.LineDraw();
+            VerLeftLine.LineDraw();
+            VerRightLine.LineDraw();
 
-            HorizontalLines Hline1 = new HorizontalLines(5, 10, 8, '#');
-            Hline1.LineDraw();
-
-            VerticalLines Vline1 = new VerticalLines(5, 10, 15, '#');
-            Vline1.LineDraw();
-
-            ReadLine();
+            //Start point drawing
+            Point p = new Point(4,5,'*');
+            p.Draw();
         }
     }
 }

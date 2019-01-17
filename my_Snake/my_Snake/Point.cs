@@ -38,6 +38,13 @@ namespace my_Snake
             WriteLine(sym);
         } //Our draw function
 
+        //Remove our start point
+        internal void Clear()
+        {
+            sym = ' ';
+            Draw();
+        }
+
         public void Move(int step, Directions dir) //Our move function
         {
             if (dir == Directions.LEFT)

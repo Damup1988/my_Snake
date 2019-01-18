@@ -42,5 +42,17 @@ namespace my_Snake
             nextPoint.Move(1,_direct);
             return nextPoint;
         }
+
+        public void ButtonIsPressed(ConsoleKey key)
+        {
+            if (key == ConsoleKey.LeftArrow)
+                _direct = Directions.LEFT;
+            if (key == ConsoleKey.RightArrow)
+                _direct = Directions.RIGHT;
+            if (key == ConsoleKey.UpArrow)
+                _direct = Directions.UP;
+            if (key == ConsoleKey.DownArrow)
+                _direct = Directions.DOWN;
+        }
     }
 }

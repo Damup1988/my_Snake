@@ -18,11 +18,11 @@ namespace my_Snake
             WriteLine("A new point creating"); //It's an empty contsructor
         }
 
-        public Point(int _x, int _y, char _sym) //It's a contsructor for 3 params
+        public Point(int x, int y, char sym) //It's a contsructor for 3 params
         {
-            x = _x;
-            y = _y;
-            sym = _sym;
+            this.x = x;
+            this.y = y;
+            this.sym = sym;
         }
 
         public Point(Point p) //It's a constructor for one param
@@ -34,8 +34,16 @@ namespace my_Snake
 
         public void Draw()
         {
-            SetCursorPosition(x, y);
-            WriteLine(sym);
+            try
+            {
+                SetCursorPosition(x, y);
+                WriteLine(sym);
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                SetCursorPosition(40,12);
+                WriteLine("Game over!");
+            }
         } //Our draw function
 
         //Remove our start point
@@ -43,6 +51,11 @@ namespace my_Snake
         {
             sym = ' ';
             Draw();
+        }
+
+        public bool IsHit(Point p)
+        {
+            return p.x == this.x && p.y == this.y;
         }
 
         public void Move(int step, Directions dir) //Our move function
@@ -53,11 +66,11 @@ namespace my_Snake
             }
             if (dir == Directions.UP)
             {
-                y = y + step;
+                y = y - step;
             }
             if (dir == Directions.DOWN)
             {
-                y = y - step;
+                y = y + step;
             }
             if (dir == Directions.RIGHT)
             {

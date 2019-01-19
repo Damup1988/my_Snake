@@ -33,6 +33,19 @@ namespace my_Snake
             head.Draw();
         }
 
+        internal bool Eat(Point apple)
+        {
+            Point head = GetNextPoint();
+            if (head.IsHit(apple))
+            {
+                apple.sym = head.sym;
+                pList.Add(apple);
+                return true;
+            }
+            else
+                return false;
+        }
+
         //We found out the next point of the snake because
         //we should know her nex step that depends on her direction and size of the step
         public Point GetNextPoint()
@@ -45,13 +58,13 @@ namespace my_Snake
 
         public void ButtonIsPressed(ConsoleKey key)
         {
-            if (key == ConsoleKey.LeftArrow)
+            if (key == ConsoleKey.LeftArrow && _direct != Directions.RIGHT)
                 _direct = Directions.LEFT;
-            if (key == ConsoleKey.RightArrow)
+            if (key == ConsoleKey.RightArrow && _direct != Directions.LEFT)
                 _direct = Directions.RIGHT;
-            if (key == ConsoleKey.UpArrow)
+            if (key == ConsoleKey.UpArrow && _direct != Directions.DOWN)
                 _direct = Directions.UP;
-            if (key == ConsoleKey.DownArrow)
+            if (key == ConsoleKey.DownArrow && _direct != Directions.UP)
                 _direct = Directions.DOWN;
         }
     }

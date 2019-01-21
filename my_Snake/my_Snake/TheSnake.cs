@@ -33,6 +33,7 @@ namespace my_Snake
             head.Draw();
         }
 
+        //A method to check if the snake meets an apple
         internal bool Eat(Point apple)
         {
             Point head = GetNextPoint();
@@ -54,6 +55,18 @@ namespace my_Snake
             Point nextPoint = new Point(head);
             nextPoint.Move(1,_direct);
             return nextPoint;
+        }
+
+        //A method to check if the snake hits his tail
+        internal bool IsHitTail()
+        {
+            var head = pList.Last();
+            for(int i=0; i <= pList.Count - 2; i++)
+            {
+                if (head.IsHit(pList[i]))
+                    return true;
+            }
+            return false;
         }
 
         public void ButtonIsPressed(ConsoleKey key)

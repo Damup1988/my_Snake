@@ -12,19 +12,13 @@ namespace my_Snake
     {
         static void Main(string[] args)
         {
+            //Windows size
             SetWindowSize(80,25);
             SetBufferSize(82,26);
 
             //Borders drawing
-            HorizontalLines HorAboveLine = new HorizontalLines(0, 78, 0, '#');
-            HorizontalLines HorBelowLine = new HorizontalLines(0, 78, 24, '#');
-            VerticalLines VerLeftLine = new VerticalLines(0, 24, 0, '#');
-            VerticalLines VerRightLine = new VerticalLines(0, 24, 78, '#');
-
-            HorAboveLine.LineDraw();
-            HorBelowLine.LineDraw();
-            VerLeftLine.LineDraw();
-            VerRightLine.LineDraw();
+            Walls walls = new Walls(78,23);
+            walls.Draw();
 
             //Start point drawing
             Point p = new Point(4,5,'*');
@@ -39,6 +33,13 @@ namespace my_Snake
 
             while (true)
             {
+                //We check if the snake hits walls or himself
+                if(walls.IsHit(snake) || snake.IsHitTail())
+                {
+                    break;
+                }
+
+                //We check if the snake meets an apple
                 if(snake.Eat(apple))
                 {
                     apple = apple_garden.CreateFood();
@@ -52,6 +53,7 @@ namespace my_Snake
 
                 Thread.Sleep(100);
 
+                //We check if a player presses a button (up,down,left,right)
                 if (KeyAvailable)
                 {
                     ConsoleKeyInfo key = ReadKey(true);
